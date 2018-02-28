@@ -1,0 +1,27 @@
+{
+  "name": "brasilrideapp-backend",
+  "version": "1.0.0",
+  "description": "CRUD Brasil Ride App",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon ./server.js --exec babel-node --presets babel-preset-env",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://juliocarneiro@bitbucket.org/juliocarneiro/brasilrideapp-backend.git"
+  },
+  "author": "Júlio Carneiro",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "mongoose": "^5.0.3"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-node6": "^11.0.0"
+  }
+}

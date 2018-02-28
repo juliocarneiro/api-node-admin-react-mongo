@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Brasil Ride / ADMIN</title>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <style>
+	  .carregando,.retorno,.error{
+		  display: none;
+	  }
+  </style>
+  </head>
+  <body>
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<h1 class="m-5 text-center">Brasil Ride / ADMIN</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-6 sub">
+				<h1 style="margin-bottom:20px;">> Posts</h1>
+			</div>
+			<div class="col-6">
+					<h1 style="margin-bottom:20px;">> Postar</h1>
+				<div class="m-2">
+					<form action="" id="form">
+						<div class="form-group">
+							<label for="exampleInputEmail1">Título do post</label>
+							<input type="text" required class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+						</div>
+						<div class="form-group">
+							<label for="exampleInputPassword1">Subtítulo do post</label>
+							<input type="text" required class="form-control" id="exampleInputPassword1">
+						</div>
+						<div class="form-group">
+							<label for="exampleFormControlTextarea1">Mensagem do post</label>
+							<textarea required class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+						</div>
+						<button id="enviar" type="submit" class="btn btn-primary mb-2">Postar notícia</button>
+						<div class="carregando">Carregando...</div>
+        				<div class="retorno">Enviado com sucesso.</div>
+        				<div class="error">Erro ao enviar, preencha os dados corretamente.</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  </script>
+  <script>
+	$(document).ready(function() {
+		const urlApi = 'http://localhost:3000/api/posts';
+		$.getJSON( urlApi, function( data ) {
+			var items = [];
+			$.each( data, function(key, post) {
+				items.push( "<div class='"+post._id+"'><h3 class='float-left'>"+post.titulo+"</h3><a href='#' class='float-right delete'><i class='fa fa-trash' style='margin-top:5px;font-size:24px' title='Deletar Post'></i></a><div class='clearfix'></div><div class=''><h5 class=''>"+post.subtitulo+"</h5><p class=''>"+post.mensagem+"</p></div></div>" );
+			});
+			$( "<div/>", {
+				"class": "posts",
+				html: items.join( "" )
+			}).appendTo( ".sub" );
+		});
+
+		$('#enviar').on('click',function(e){
+			e.preventDefault();
+			var titulo = $('#exampleInputEmail1').val();
+			var subtitulo = $('#exampleInputPassword1').val();
+			var mensagem = $('#exampleFormControlTextarea1').val();
+
+			$.ajax({
+				url: 'http://localhost:3000/api/posts',
+				dataType: 'json',
+				type: 'post',
+				contentType: 'application/json',
+				data: JSON.stringify( { "titulo": titulo, "subtitulo": subtitulo, "mensagem": mensagem } ),
+				processData: false,
+				beforeSend : function(){
+					$('.carregando').show('100');
+					console.log("Enviando...");
+				},
+				success: function( data, textStatus, jQxhr ){
+					console.log( textStatus );
+					$('.carregando').hide('100');
+					$('.error').hide('100');
+					$('.retorno').find('strong').text(textStatus).end().show(100);
+					
+					setTimeout(function(){ location.reload(); }, 500);
+				},
+				error: function( jqXhr, textStatus, errorThrown ){
+					console.log( errorThrown );
+					$('.carregando').hide('100');
+                	$('.error').find('strong').text(textStatus).end().show(100);
+				}
+			});
+		});
+
+		setTimeout(function(){ 
+			$('.delete').on('click',function(e){
+				e.preventDefault();
+				$.ajax({
+					url: urlApi + "/" + $(this).parent().attr('class'),
+					type: 'DELETE',
+					success: function(){
+						location.reload();
+					}
+				});
+			});
+		}, 500);
+	});
+  </script>
+  </body>
+</html>
