@@ -2,9 +2,9 @@
   "name": "brasilrideapp-backend",
   "version": "1.0.0",
   "description": "CRUD Brasil Ride App",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "start": "nodemon ./server.js --exec babel-node --presets babel-preset-env",
+    "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,11 +17,9 @@
     "body-parser": "^1.18.2",
     "ejs": "^2.5.7",
     "express": "^4.16.2",
-    "mongoose": "^5.0.3"
-  },
-  "devDependencies": {
-    "babel-cli": "^6.18.0",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-node6": "^11.0.0"
+    "method-override": "^2.3.10",
+    "mongoose": "^5.0.7",
+    "morgan": "^1.9.0",
+    "node-restful": "^0.2.6"
   }
 }

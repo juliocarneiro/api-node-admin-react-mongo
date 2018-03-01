@@ -41,7 +41,7 @@
 							<label for="exampleFormControlTextarea1">Mensagem do post</label>
 							<textarea required class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
 						</div>
-						<button id="enviar" type="submit" class="btn btn-primary mb-2">Postar notícia</button>
+						<button type="submit" id="enviar" class="btn btn-primary mb-2">Postar notícia</button>
 						<div class="carregando">Carregando...</div>
         				<div class="retorno">Enviado com sucesso.</div>
         				<div class="error">Erro ao enviar, preencha os dados corretamente.</div>
@@ -57,6 +57,7 @@
   </script>
   <script>
 	$(document).ready(function() {
+
 		const urlApi = 'http://localhost:3000/api/posts';
 		$.getJSON( urlApi, function( data ) {
 			var items = [];
@@ -75,31 +76,39 @@
 			var subtitulo = $('#exampleInputPassword1').val();
 			var mensagem = $('#exampleFormControlTextarea1').val();
 
-			$.ajax({
-				url: 'http://localhost:3000/api/posts',
-				dataType: 'json',
-				type: 'post',
-				contentType: 'application/json',
-				data: JSON.stringify( { "titulo": titulo, "subtitulo": subtitulo, "mensagem": mensagem } ),
-				processData: false,
-				beforeSend : function(){
-					$('.carregando').show('100');
-					console.log("Enviando...");
-				},
-				success: function( data, textStatus, jQxhr ){
-					console.log( textStatus );
-					$('.carregando').hide('100');
-					$('.error').hide('100');
-					$('.retorno').find('strong').text(textStatus).end().show(100);
-					
-					setTimeout(function(){ location.reload(); }, 500);
-				},
-				error: function( jqXhr, textStatus, errorThrown ){
-					console.log( errorThrown );
-					$('.carregando').hide('100');
-                	$('.error').find('strong').text(textStatus).end().show(100);
-				}
-			});
+			var vazios = $("input, textarea").filter(function() {return !this.value;}).get();
+
+			if(vazios.length){
+				$('.error').show('100');
+				$('input, textarea').each(function(){
+					$(this).css('border-color', 'red')
+				});
+			} else{
+				$('input, textarea').css('border-color', 'green');
+				$.ajax({
+					url: urlApi,
+					dataType: 'json',
+					type: 'post',
+					contentType: 'application/json',
+					data: JSON.stringify( { "titulo": titulo, "subtitulo": subtitulo, "mensagem": mensagem } ),
+					processData: false,
+					beforeSend : function(){
+						$('.carregando').show('100');
+						console.log("Enviando...");
+					},
+					success: function( data, textStatus, jQxhr ){
+						$('.carregando').hide('100');
+						$('.error').hide('100');
+						$('.retorno').find('strong').text(textStatus).end().show(100);
+						
+						setTimeout(function(){ location.reload(); }, 500);
+					},
+					error: function( jqXhr, textStatus, errorThrown ){
+						$('.carregando').hide('100');
+						$('.error').find('strong').text(textStatus).end().show(100);
+					}
+				});
+			}
 		});
 
 		setTimeout(function(){ 
