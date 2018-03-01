@@ -1,4 +1,4 @@
-# BRASILRIDE API Node.JS
+# API Node.JS
 
 ## Recursos Utilizados no Desenvolvimento:
 
@@ -67,13 +67,13 @@ obs.: api de exemplo através do site: https://jsonplaceholder.typicode.com
 /posts                    |       GET         | Selecionar Todos os Posts     | GET:    http://localhost:8000/api/posts     
 /posts                     |       POST        | Criar um Post                 | POST:   http://localhost:8000/api/posts
 /posts/:id             |       GET         | Selecionar Por Id             | GET:    http://localhost:8000/posts/:id
-/posts/:nome             |       GET         | Selecionar Por Titulo            | GET:    http://localhost:8000/posts/:titulo
+/posts/:titulo             |       GET         | Selecionar Por Titulo            | GET:    http://localhost:8000/posts/:titulo
 /posts/:id            |       PUT         | Atualizar Por Id              | PUT:    http://localhost:8000/posts/:id   
 /posts/:id           |       DELETE      | Excluir Por Id                | DELETE: http://localhost:8000/posts/:id
 
 ### Executando a Aplicação
 
-Primeiro, você precisará abrir um terminal na sua máquina e iniciar o MongoDb. Basta digitar na tela do cmd o seguinte comando:
+Primeiro, você precisará abrir um terminal na sua máquina e iniciar o MongoDb (caso conecte localmente). Basta digitar na tela do cmd o seguinte comando:
 
 ```
 mongod
@@ -87,12 +87,12 @@ npm start
 
 Caso o MongoDb esteja devidamente instalado em sua máquina, ele iniciará o serviço mostrando que a port 27017 foi iniciada.
 
-Agora, abre a página da aplicação em `http://localhost:8000/api`. E pronto a aplicação será executada de maneira local na sua máquina.  
+Agora, abre a página da aplicação em `http://localhost:8000/admin`. E pronto a aplicação será executada de maneira local na sua máquina.  
 
 Se tudo der certo, deverá apresentar a seguinte mensagem:
 
 ```
-Bem Vindo(a) a API do Brasil Ride
+Bem Vindo(a) a API Restful
 ```
 
 **documentação em desenvolvimento**
