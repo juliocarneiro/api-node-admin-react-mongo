@@ -1,25 +1,21 @@
 {
-  "name": "brasilrideapp-backend",
+  "name": "brride",
   "version": "1.0.0",
-  "description": "CRUD Brasil Ride App",
-  "main": "index.js",
+  "description":
+    "Using create-react-app with a Node Express Backend",
   "scripts": {
-    "start": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "client": "cd client && yarn start",
+    "server": "nodemon server.js",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
   },
-  "repository": {
-    "type": "git",
-    "url": "https://juliocarneiro@bitbucket.org/juliocarneiro/brasilrideapp-backend.git"
-  },
-  "author": "Júlio Carneiro",
-  "license": "MIT",
   "dependencies": {
     "body-parser": "^1.18.2",
-    "ejs": "^2.5.7",
     "express": "^4.16.2",
-    "method-override": "^2.3.10",
+    "jsonwebtoken": "^8.2.0",
     "mongoose": "^5.0.7",
-    "morgan": "^1.9.0",
     "node-restful": "^0.2.6"
+  },
+  "devDependencies": {
+    "concurrently": "^3.5.0"
   }
 }

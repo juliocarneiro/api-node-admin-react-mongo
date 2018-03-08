@@ -1,0 +1,137 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+.form {
+    position: relative;
+    z-index: 1;
+    background: #FFFFFF;
+    max-width: 360px;
+    margin: 0 auto 30px;
+    padding: 45px;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    border-radius: 4px;
+}
+.form input {
+    font-family: "Roboto", sans-serif;
+    background: #f2f2f2;
+    width: 100%;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+    outline: none;
+}
+.form button {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    background: #343434;
+    width: 100%;
+    border: 0;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+    cursor: pointer;
+    outline: none;
+}
+.form button:hover,.form button:active,.form button:focus {
+    background: #feee00;
+    color:black;
+}
+body {
+    background: #343434;     
+}
+#loader{
+    border:16px solid #343434;
+    border-top:16px solid #feee00;
+    border-radius:50%;
+    width:120px;
+    height:120px;
+    animation:spin 2s linear infinite;
+    margin:0 auto !important;
+    float:none !important
+}
+
+#space-loader{
+    height:20%
+}
+
+@keyframes spin{
+    0%{
+        transform:rotate(0deg)
+    }
+    100%{
+        transform:rotate(360deg)
+    }
+}
+
+.logado{
+    color:white;
+}
+.logado form input, .logado form textarea{
+    width: 100%;
+    border: 0;
+    border-radius: 4px;
+    padding:10px;
+    margin:5px 0;
+    resize: none;
+    outline: none;
+}
+.logado form textarea{
+    height: 150px;
+}
+.logado h1 {
+    color: #feee00;
+}
+.login img{
+    margin:10% 0 10px 0;
+}
+.logado .header{
+    background-color: #feee00;
+    padding:20px 0;
+    margin-bottom:20px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.logado .header h3{
+    color: #343434;
+    margin:0;
+}
+.logado button{
+    border-radius: 4px;
+    background: #343434;
+    border: 0;
+    cursor: pointer;
+    color: white;
+    padding:10px 20px;
+    font-weight: bold;
+    font-size:12px;
+}
+.logado button:hover{
+    background: #feee00;
+    color: #343434;
+}
+.login .form-submit{
+    cursor: pointer;
+    font-weight: bold;
+    background: #343434;
+    color: white;
+    border-radius: 4px;
+}
+.login .form-submit:hover{
+    background: #feee00;
+    color: #343434;
+}
+.login .form-submit:last-of-type{
+    margin:0!important;
+}
+.posts{
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    padding:30px;
+    background: white;
+    color: #343434;
+    margin-bottom:20px;
+    border-radius: 4px;
+}
+.posts h1{
+    color:#f0f0f0;
+
+}
