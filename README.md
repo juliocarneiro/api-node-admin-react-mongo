@@ -6,10 +6,12 @@
 - Express.Js
 - MongoDb & MLab;
 - ES6;
+- JWT
 - Babel (Transpiler);
 - Visual Studio Code;
 - Json data (para retornar os dados);
 - PostMan (testar a API criada);
+- React
 
 ## Testando a Aplicação no Postman:
 Caso queira testar as API's criadas no projeto, primeiro baixe o [Postman](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop).
@@ -42,12 +44,14 @@ cd "C:\Users\NomeDoComputador\Documents\..."
 Depois, quando estiver na pasta do projeto, basta digitar no cmd a seguinte instrução: **(dentro do src)**
 
 ```
-npm install
+yarn install
 ```
 
 Ao digitar a instrução acima, automaticamente ele irá baixar todas as dependências listadas e definidas no arquivo package.json:
 
 * `node_modules` - que contêm os packages do npm que precisará para o projeto.
+
+Vá para a pasta /client e faça a mesma coisa.
 
 ## Instalação dos Programas via Linux:
 
@@ -82,18 +86,14 @@ mongod
 Depois, abre um outro terminal, para iniciar a aplicação. Para isso, basta iniciar o server para o projeto ser executado localmente. (via nodemon)
 
 ```
-npm start
+yarn dev
 ```
 
 Caso o MongoDb esteja devidamente instalado em sua máquina, ele iniciará o serviço mostrando que a port 27017 foi iniciada.
 
-Agora, abre a página da aplicação em `http://localhost:8000/admin`. E pronto a aplicação será executada de maneira local na sua máquina.  
+Agora, abre a página da aplicação em `http://localhost:3000/`. E pronto a aplicação será executada de maneira local na sua máquina.  
 
-Se tudo der certo, deverá apresentar a seguinte mensagem:
-
-```
-Bem Vindo(a) a API Restful
-```
+Se tudo der certo, deverá apresentar a página de login, usuário e senha para teste são teste:teste
 
 **documentação em desenvolvimento**
 
